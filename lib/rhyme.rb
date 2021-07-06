@@ -4,8 +4,8 @@ class Rhyme
     add_all_blanks
   end
 
-  def add_blank(subject, verb)
-    blank = {"subject": subject, "verb": verb}
+  def add_blank(subject, action)
+    blank = {"subject": subject, "action": action}
     @blanks.push(blank)
   end
 
@@ -28,7 +28,7 @@ class Rhyme
     rhyme = ""
     clause = "."
     @blanks.each do |blank|
-      clause.prepend(" the #{blank[:subject]} that #{blank[:verb]}")
+      clause.prepend(" the #{blank[:subject]} that #{blank[:action]}")
       rhyme << "This is" + clause + "\n"
     end
     return rhyme
