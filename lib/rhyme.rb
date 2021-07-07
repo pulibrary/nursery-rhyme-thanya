@@ -1,6 +1,6 @@
 class Rhyme
   def clauses
-    [ "the house that Jack built.",
+    [ "the house that Jack built",
       "the malt that lay in",
       "the rat that ate",
       "the cat that killed",
@@ -14,13 +14,29 @@ class Rhyme
       "the horse and the hound and the horn that belonged to" ] 
   end
 
-  def to_s
+  def in_order
     rhyme = ""
-    body = ""
+    body = "."
     clauses.each do |clause|
       body.prepend(" " + clause)
       rhyme << "This is" + body + "\n"
     end
     rhyme
   end
+
+  def random_order
+    rhyme = ""
+    body = "."
+
+    # generate a random ordering of the numbers from 0 to clauses.length
+    order = (0..clauses.length - 1).to_a.sample(clauses.length)
+
+    order.each do |index|
+      body.prepend(" " + clauses[index])
+      rhyme << "This is" + body + "\n"
+    end
+    rhyme
+  end
 end
+
+puts Rhyme.new.random_order
