@@ -1,6 +1,6 @@
 class Rhyme
   def initialize
-    @sentences = [
+    @clauses = [
       "the house that Jack built.",
       "the malt that lay in",
       "the rat that ate",
@@ -18,10 +18,10 @@ class Rhyme
 
   def to_s
     rhyme = ""
-    clause = ""
-    @sentences.each do |sentence|
-      clause.prepend(" " + sentence)
-      rhyme << "This is" + clause + "\n"
+    body = ""
+    @clauses.each do |clause|
+      body.prepend(" " + clause)
+      rhyme << "This is" + body + "\n"
     end
     return rhyme
   end
