@@ -1,6 +1,6 @@
 class Rhyme
-  def clauses
-    [ "the house that Jack built",
+  CLAUSES = [ 
+      "the house that Jack built",
       "the malt that lay in",
       "the rat that ate",
       "the cat that killed",
@@ -11,25 +11,30 @@ class Rhyme
       "the priest all shaven and shorn that married",
       "the rooster that crowed in the morn that woke",
       "the farmer sowing his corn that kept",
-      "the horse and the hound and the horn that belonged to" ] 
+      "the horse and the hound and the horn that belonged to" 
+  ]
+
+  attr_reader :ordering
+
+  def initialize(ordering = :in_order) 
+    @ordering = ordering
   end
 
-  def generate_order(ordering)
+  def clauses
     case ordering
-    when 'random'
-      (0..clauses.length - 1).to_a.sample(clauses.length)
+    when :random 
+      CLAUSES.shuffle
     else
-      (0..clauses.length - 1).to_a
+      CLAUSES
     end
   end
 
-  def recite(ordering = 'in order')
+  def recite
     rhyme = ""
     body = "."
-    order = generate_order(ordering)
 
-    order.each do |index|
-      body.prepend(" " + clauses[index])
+    clauses.each do |clause|
+      body.prepend(" " + clause)
       rhyme << "This is" + body + "\n"
     end
     rhyme
