@@ -24,12 +24,15 @@ class Rhyme
     rhyme
   end
 
-  def random_order
+  # generates a random ordering of the numbers from 0 to clauses.length
+  def random_order 
+    (0..clauses.length - 1).to_a.sample(clauses.length)
+  end
+
+  def in_random_order
     rhyme = ""
     body = "."
-
-    # generate a random ordering of the numbers from 0 to clauses.length
-    order = (0..clauses.length - 1).to_a.sample(clauses.length)
+    order = random_order
 
     order.each do |index|
       body.prepend(" " + clauses[index])
@@ -38,5 +41,3 @@ class Rhyme
     rhyme
   end
 end
-
-puts Rhyme.new.random_order
