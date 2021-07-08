@@ -1,5 +1,5 @@
 class Rhyme
-  CLAUSES = [ 
+  CLAUSES = [
       "the house that Jack built",
       "the malt that lay in",
       "the rat that ate",
@@ -22,8 +22,10 @@ class Rhyme
 
   def clauses
     case ordering
-    when :random 
+    when :random
       CLAUSES.shuffle
+    when :semi_random
+      [CLAUSES[0], *CLAUSES[1..].shuffle]
     else
       CLAUSES
     end
