@@ -1,9 +1,9 @@
 require 'rhyme'
 
 describe Rhyme do
-  let(:rhyme_file) { File.read("nursery_rhyme.txt") }
-  let(:random_rhyme_file) { File.read("random_nursery_rhyme.txt") }
-  let(:semi_random_rhyme_file) { File.read("semi_random_nursery_rhyme.txt") }
+  let(:rhyme_file) { File.read("spec/fixtures/nursery_rhyme.txt") }
+  let(:random_rhyme_file) { File.read("spec/fixtures/random_nursery_rhyme.txt") }
+  let(:semi_random_rhyme_file) { File.read("spec/fixtures/semi_random_nursery_rhyme.txt") }
 
   describe "#recite" do
     it "returns the nursery rhyme in order" do
