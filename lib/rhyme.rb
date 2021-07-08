@@ -11,7 +11,7 @@ class Rhyme
       "the priest all shaven and shorn that married",
       "the rooster that crowed in the morn that woke",
       "the farmer sowing his corn that kept",
-      "the horse and the hound and the horn that belonged to" 
+      "the horse and the hound and the horn that belonged to"
   ]
 
   attr_reader :ordering
@@ -32,13 +32,9 @@ class Rhyme
   end
 
   def recite
-    rhyme = ""
-    body = "."
-
-    clauses.each do |clause|
-      body.prepend(" " + clause)
-      rhyme << "This is" + body + "\n"
-    end
-    rhyme
+    clauses.each_index.map do |index|
+      body = clauses[0..index].reverse.join(" ")
+      "This is #{body}."
+    end.join("\n")
   end
 end
