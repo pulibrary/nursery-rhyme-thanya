@@ -14,25 +14,19 @@ class Rhyme
       "the horse and the hound and the horn that belonged to" ] 
   end
 
-  def in_order
-    rhyme = ""
-    body = "."
-    clauses.each do |clause|
-      body.prepend(" " + clause)
-      rhyme << "This is" + body + "\n"
+  def generate_order(ordering)
+    case ordering
+    when 'random'
+      (0..clauses.length - 1).to_a.sample(clauses.length)
+    else
+      (0..clauses.length - 1).to_a
     end
-    rhyme
   end
 
-  # generates a random ordering of the numbers from 0 to clauses.length
-  def random_order 
-    (0..clauses.length - 1).to_a.sample(clauses.length)
-  end
-
-  def in_random_order
+  def recite(ordering = 'in order')
     rhyme = ""
     body = "."
-    order = random_order
+    order = generate_order(ordering)
 
     order.each do |index|
       body.prepend(" " + clauses[index])
